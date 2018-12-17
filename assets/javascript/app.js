@@ -38,6 +38,7 @@ $("#add-train-btn").on("click", function (event) {
 // Grabs user input
 var trainName = $("#train-name-input").val().trim();
 var dest = $("#destination-input").val().trim();
+//line 41 needs to be changed to military time in moment.js
 var trainStart = moment($("#start-input").val().trim(), "MM/DD/YYYY").format("X");
 var freq = $("#frequency-input").val().trim();
 
