@@ -37,17 +37,16 @@ $("#add-train-btn").on("click", function (event) {
 
 // Grabs user input
 var trainName = $("#train-name-input").val().trim();
-var dest = $("#destination-input").val().trim();
-//line 41 needs to be changed to military time in moment.js
-var trainStart = moment($("#start-input").val().trim(), "MM/DD/YYYY").format("X");
-var freq = $("#frequency-input").val().trim();
+var trainDest = $("#destination-input").val().trim();
+var trainStart = moment($('#start-input').val().trim()).format("HH:mm");
+var trainfreq = $("#frequency-input").val().trim();
 
-// Creates local "temporary" object for holding employee data
+// Creates local "temporary" object for holding data
 var newTrain = {
     name: trainName,
     destination: trainDest,
     fristTrainTime: trainStart,
-    frequency: trainFreq
+    frequency: trainFreq,
 };
 
 //upload to database
@@ -84,3 +83,4 @@ database.ref().on("child_added", function (childSnapshot) {
     console.log(trainFreq);
 
 });
+
