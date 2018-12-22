@@ -39,7 +39,7 @@ $("#add-train-btn").on("click", function (event) {
 var trainName = $("#train-name-input").val().trim();
 var trainDest = $("#destination-input").val().trim();
 var trainStart = moment($('#start-input').val().trim()).format("HH:mm");
-var trainfreq = $("#frequency-input").val().trim();
+var trainFreq = $("#frequency-input").val().trim();
 
 // Creates local "temporary" object for holding data
 var newTrain = {
@@ -82,5 +82,18 @@ database.ref().on("child_added", function (childSnapshot) {
     console.log(trainStart);
     console.log(trainFreq);
 
+    var trainStartPretty = moment.unix(trainStart).format("HH:mm");
+
+    // Create the new row
+    var newRow = $("<tr>").append(
+        $("<td>").text(trainName),
+        $("<td>").text(trainDest),
+        $("<td>").text(trainStartPretty),
+        $("<td>").text(trainStart),
+        $("<td>").text(trainfreq),
+    );
+
+    // Append the new row to the table
+    $("#train-table > tbody").append(newRow);
 });
 
